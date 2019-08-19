@@ -9,17 +9,13 @@ def string_2_int(num1):
 	result = int (result.translate({ord("'"): None}))	
 	return int(result/100)
 
-
-
-
-
-
 # Give the location of the file 
 data = ("TestData.xlsx") 
 
 file_rec = open("session_rec.txt","a+")
 # set up a dictionary list to store the time_stamp with playerID in activity sheet
 activity = defaultdict(list)
+# set a dictionary to store the date info
 date_rec = {}   
 wb = xlrd.open_workbook(data) 
 sheet_1 = wb.sheet_by_index(0)
@@ -119,19 +115,5 @@ for i in range(0,len(date_rec)):
 				else:
 					break
 	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
