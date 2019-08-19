@@ -1,10 +1,11 @@
 # Interview_Code_assignments
 This project mainly contains two parts.
+
 Part_1:
 Coding assignment 1 – Develop a program in C to do the following:
 a :Read in a binary file, convert to S-record, and write back out as an S-record.
 b :Read in an S-record file, convert to binary and write back out.
-c :Read a file (S-Record or binary) and send down RS-232 port. (unfinished)
+c :Read a file (S-Record or binary) and send down RS-232 port. (unfinished) 
 
 
 Part_2:
