@@ -24,3 +24,4 @@ On a given day, within a 5 min period 15% of players on roster need to have acti
 AND at least one player has an HIE record.
 Then if no record meets criteria after 40 minutes, then move back to last valid record and add 40 mins.
  
+For each part, there is folder including corresponding source files, header files, makefile and Readme file. And the Readme file documents the function of the code and how to run it properly.
