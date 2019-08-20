@@ -9,11 +9,9 @@
 #include "srecbin.h"
 
 
-
-
 int srec_bin(FILE * srec, char * bin, uint32_t file_size) // this function transfer bin file to S-record file
 {
-	char buffer[MAX_BUFFER_SIZE]; // extra byte for checksum
+	char buffer[MAX_BUFFER_SIZE]; // we claim 514 bytes for general case
 	FILE * out;
 	uint32_t type,addr_bytes,total_byte;
 	fprintf(stdout,"task is under processing ...\n");
@@ -26,11 +24,10 @@ int srec_bin(FILE * srec, char * bin, uint32_t file_size) // this function trans
 	}
 	do
 	{
-		if(fgets(buffer,MAX_BUFFER_SIZE,srec))
+		if(fgets(buffer,MAX_BUFFER_SIZE,srec))  // error or EOF
 		{
 			// do nothing
 		}
-		// printf("%s\n",buffer);
 		if(buffer[0] == 'S')
 		{
 			type = buffer[1] - '0';
@@ -60,10 +57,8 @@ int srec_bin(FILE * srec, char * bin, uint32_t file_size) // this function trans
 					}
 					location = location << 4;
 					location += temp;
-					//printf("location is %d\n",location);
 				}
 				uint32_t data_byte = total_byte - addr_bytes - 1;
-				//printf("data length is %d\n",data_byte);
 				char * data =(char *)malloc(sizeof(char) * data_byte);
 				if(data == NULL)
 				{
@@ -74,7 +69,6 @@ int srec_bin(FILE * srec, char * bin, uint32_t file_size) // this function trans
 				for(int i = 4 + addr_bytes * 2;i < (4 + addr_bytes * 2 + 2 * data_byte);i +=2)
 				{
 					data[q] = (hex_to_int(buffer[i]) << 4) + hex_to_int(buffer[i + 1]);
-					//printf("%d",data[q]);
 					q++;
 				}
 				fseek(out,location,SEEK_SET);

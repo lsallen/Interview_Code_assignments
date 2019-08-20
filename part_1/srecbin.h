@@ -13,7 +13,7 @@ uint32_t end_addr;         // end adress
 uint32_t addr_bytes = 2;   // length of address
 
 
-uint32_t get_file_size(FILE *fp)
+uint32_t get_file_size(FILE *fp)  // get the file size
 {
 	struct stat temp;
 
@@ -28,7 +28,7 @@ uint32_t get_file_size(FILE *fp)
 }
 
 
-uint8_t hex_to_int(unsigned char hex)
+uint8_t hex_to_int(unsigned char hex)  // transform hex value to int
 {
 	uint8_t result;
 	if(hex >= '0' && hex <= '9')
